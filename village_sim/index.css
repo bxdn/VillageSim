@@ -1,0 +1,78 @@
+body {font-family:Arial,sans-serif;font-size:18;display:flex;flex-direction:column;height:100%;
+    justify-content:center;align-items:center;margin:0px 0px 0px 0px}
+button:focus, input[type="button"]:focus{
+    outline: none;
+}
+button::-moz-focus-inner {border:0;}
+#mainContainer{width:80%;height:75%;margin:0px 0px 0px 0px;border:5px double black;display:flex;flex-direction:column}
+#header{width:100%;font-size:30;height:100px;display:flex;align-items:center;border-bottom:3px solid black}
+#everythingButHeader{display:flex;flex-direction:row;height:100%}
+#leftCol{width:50%;display:flex;border-right:3px solid black;flex-direction:column}
+#rightCol{display:flex;flex-direction:column;font-size:18;width:50%}
+#flowAndResources{display:flex;flex-direction:column;align-items:center;width:100%;height:50%;justify-content:space-evenly;overflow:auto}
+#gather{display:flex;flex-direction:row;align-items:center}
+#resources{display:flex;flex-direction:row;align-items:flex-start}
+#flow{display:flex;flex-direction:row;align-items:flex-start}
+#employment{display:flex;flex-direction:row;margin:10px;}
+#roles{display:flex;flex-direction:column}
+#graphButton{padding:5px;font-size:18;text-align:center;cursor:pointer;width:100%}
+#buildButton{padding:5px;font-size:18;text-align:center;cursor:pointer;width:100%;border-bottom:2px solid black}
+#resourceButton{padding:5px;font-size:18;text-align:center;cursor:pointer;width:100%;border-right:2px solid black}
+.infoPane{height:100%;width:100%}
+.arrowDiv{display:flex;flex-direction:column}
+.menu{display:flex;flex-direction:row;flex-shrink:0}
+.info{display:flex;flex-direction:column;overflow:auto;align-items:center;justify-content:center;height:100%}
+.arrow{border:2px solid black;margin:5px;cursor:pointer}
+.roleLabel{height:36px;display:flex;align-items:center;justify-content:center;margin:0px 10px;flex-shrink:0}
+.fadeOut{animation:fadeOut;-moz-animation:fadeOut;-webkit-animation:fadeOut;
+    animation-duration:1s;animation-fill-mode:both}
+.fadeIn{animation:fadeIn;-moz-animation:fadeIn;-webkit-animation:fadeIn;
+    animation-duration:1s;animation-fill-mode:both}
+.grayOut{animation:greyOut;-moz-animation:greyOut;-webkit-animation:fadeIn;
+    animation-duration:1s;animation-fill-mode:both}
+.buyButton{border:2px solid black;margin:25px 15px;padding:5px;font-size:18;
+    text-align:center;cursor:pointer}
+.menButton{border-right:2px solid black;border-bottom:2px solid black;padding:5px;font-size:18;
+    text-align:center;cursor:pointer;width:100%}
+.matIcons{height:30px;margin:5px 15px}
+.materials{display:flex;flex-direction:column;align-items:center}
+.padder{padding-bottom:2.5px;padding-top:2.5px}
+.padder2{margin-bottom:20px}
+.dank{width:100%;height:100%;position:absolute;top:0;left:0}
+@keyframes fadeOut {
+    from {opacity: 1} 
+    to {opacity: 0}
+}
+@keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+@keyframes greyOut {
+    from {background-color:white} 
+    to {background-color:rgb(206, 206, 206)}
+}
+@-moz-keyframes fadeOut {
+    from {opacity: 1} 
+    to {opacity: 0}
+}
+@-moz-keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+@-moz-keyframes greyOut {
+    from {background-color:white} 
+    to {background-color:rgb(206, 206, 206)}
+}
+@-webkit-keyframes fadeOut {
+    from {opacity: 1} 
+    to {opacity: 0}
+}
+@-webkit-keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+@-webkit-keyframes greyOut {
+    from {background-color:white} 
+    to {background-color:rgb(206, 206, 206)}
+}
+

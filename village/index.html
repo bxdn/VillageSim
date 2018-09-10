@@ -1,0 +1,282 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Village Simulator!</title>
+        <link href="index.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="mainContainer" class="fadeIn">
+            <div id="header">
+                <div style="display:flex;align-items:center;width:50%">
+                        <span style="margin:0px 20px">Village Sim</span>
+                </div>
+                <div style="display:flex;justify-content:flex-end;width:50%">
+                        <btn class = "buyButton" onmousedown = "Increment_Year(main)">END YEAR</btn>
+                        <btn class = "buyButton" style="margin:25px" onmousedown = "Purge_Save(main)">CLEAR SAVE</btn>
+                </div>
+            </div>
+            <div id="everythingButHeader">
+                <div id="leftCol">
+                    <div id="leftMenu" class="menu">
+                        <btn id="resourceButton" onmousedown = "Show_Tab(0,0)">Resources</btn>
+                        <btn class="menButton" onmousedown = "Show_Tab(0,1)">Employment</btn>
+                        <btn id="buildButton" onmousedown = "Show_Tab(0,2)">Building</btn>
+                    </div>
+                    <div id="leftInfo" class="info">
+                        <div id="allResources" style="display:flex;flex-direction:column;height:100%;width:100%">
+                            <div id="flowAndResources">
+                                <div id="resources">
+                                    <div class="materials">
+                                        <img src="apple.png" class="matIcons" title="food"></img>
+                                        <span id="food">0</span>
+                                    </div>
+                                    <div class="materials">
+                                        <img src="wood.png" class="matIcons" title="wood"></img>
+                                        <span id="wood">0</span>
+                                    </div>
+                                    <div class="materials">
+                                        <img src="stone.png" class="matIcons" title="stone"></img>
+                                        <span id="stone">0</span>
+                                    </div>
+                                    <div class="materials">
+                                        <img src="house.png" class="matIcons" title="housing"></img>
+                                        <span id="house">0</span>
+                                    </div>
+                                    <div class="materials">
+                                            <img src="land.png" class="matIcons" title="land"></img>
+                                            <span id="land">0</span>
+                                    </div>
+                                </div>
+                                <div id="flow">
+                                    <div class="materials">
+                                        <img src="builder.png" class="matIcons" title="idle builders"></img>
+                                        <span id="labor">0</span>
+                                    </div>
+                                    <div class="materials">
+                                        <img src="labor.png" class="matIcons" title="idle workers"></img>
+                                        <span id="builder">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="height:50%;display:flex;align-items:center;justify-content:center;border-top: 2px solid black;overflow:auto">
+                                <p style="width:75%;font-size:1vw" align="center">
+                                    Instructions:<br><br>
+                                    See if you can keep this small isolated village alive.<br>
+                                    Everyone eats 1 food per year or they starve.<br>
+                                    Everyone must have 1 housing or they freeze over the winter.<br>
+                                    Buildings are built instantly but can be undone.<br>
+                                    Good luck.
+                                </p>
+                            </div>
+                        </div>
+                        <div id="employmentAndInfo" style="display:none;flex-direction:column">
+                            <div id="employment">
+                                <div class="arrowDiv">
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,0,0,10)">&lt;&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,1,0,10)">&lt;&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,2,0,10)">&lt;&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,3,0,10)">&lt;&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,4,0,10)">&lt;&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,5,0,10)">&lt;&lt;&lt;</btn>
+                                </div>
+                                <div class="arrowDiv">
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,0,0,1)">&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,1,0,1)">&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,2,0,1)">&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,3,0,1)">&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,4,0,1)">&lt;&lt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,5,0,1)">&lt;&lt;</btn>
+                                </div>
+                                <div id="roles">
+                                    <div class="roleLabel" id="farmersLabel"><span>Farmers: 0</span></div>
+                                    <div class="roleLabel" id="buildersLabel"><span class="roleLabel">Builders: 0</span></div>
+                                    <div class="roleLabel" id="expandLabel"><span class="roleLabel">Land Clearers: 0</span></div>
+                                    <div class="roleLabel" id="woodcuttersLabel"><span class="roleLabel">Woodcutters: 0</span></div>
+                                    <div class="roleLabel" id="quarrymenLabel"><span class="roleLabel">Quarrymen: 0</span></div>
+                                    <div class="roleLabel" id="millersLabel"><span class="roleLabel">Millers: 0</span></div>
+                                </div>
+                                <div class="arrowDiv">
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,0,1,1)">&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,1,1,1)">&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,2,1,1)">&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,3,1,1)">&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,4,1,1)">&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,5,1,1)">&gt;&gt;</btn>
+                                </div>
+                                <div class="arrowDiv">
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,0,1,10)">&gt;&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,1,1,10)">&gt;&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,2,1,10)">&gt;&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,3,1,10)">&gt;&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,4,1,10)">&gt;&gt;&gt;</btn>
+                                    <btn class="Arrow" onmousedown="Increment_Worker(main,5,1,10)">&gt;&gt;&gt;</btn>
+                                </div>
+                            </div>
+                            <div id="foodInfo" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+                                <br>
+                                <span>Optimal millers: 0</span>
+                                <span>Optimal farmers: 0</span>
+                            </div>
+                        </div>
+                        <div id="building" style="display:none">
+                            <div class="arrowDiv">
+                                <btn class="Arrow" onmousedown="Increment_Build(main,0,0,10)">&lt;&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,1,0,10)">&lt;&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,2,0,10)">&lt;&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,3,0,10)">&lt;&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,4,0,10)">&lt;&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,5,0,10)">&lt;&lt;&lt;</btn>
+                            </div>
+                            <div class="arrowDiv">
+                                <btn class="Arrow" onmousedown="Increment_Build(main,0,0,1)">&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,1,0,1)">&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,2,0,1)">&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,3,0,1)">&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,4,0,1)">&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,5,0,1)">&lt;&lt;</btn>
+                            </div>
+                            <div id="buildings">
+                                <div class="roleLabel" id="farms"><span class="roleLabel">Farms: 0</span></div>
+                                <div class="roleLabel" id="hut"><span class="roleLabel">Huts: 0</span></div>
+                                <div class="roleLabel" id="cottage"><span class="roleLabel">Cottages: 0</span></div>
+                                <div class="roleLabel" id="lumberMill"><span class="roleLabel">Lumber Mills: 0</span></div>
+                                <div class="roleLabel" id="quarry"><span class="roleLabel">Quarries: 0</span></div>
+                                <div class="roleLabel" id="mill"><span class="roleLabel">Mills: 0</span></div>
+                            </div>
+                            <div class="arrowDiv">
+                                <btn class="Arrow" onmousedown="Increment_Build(main,0,1,1)">&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,1,1,1)">&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,2,1,1)">&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,3,1,1)">&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,4,1,1)">&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,5,1,1)">&gt;&gt;</btn>
+                            </div>
+                            <div class="arrowDiv">
+                                <btn class="Arrow" onmousedown="Increment_Build(main,0,1,10)">&gt;&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,1,1,10)">&gt;&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,2,1,10)">&gt;&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,3,1,10)">&gt;&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,4,1,10)">&gt;&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,5,1,10)">&gt;&gt;&gt;</btn>
+                            </div>
+                        </div>
+                        <!--<div id="jobsAndBuildings" style="display:none;flex-direction:column">
+                          <div id="employment">
+                              <div class="arrowDiv">
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,0,0,10)">&lt;&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,1,0,10)">&lt;&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,2,0,10)">&lt;&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,3,0,10)">&lt;&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,4,0,10)">&lt;&lt;&lt;</btn>
+                              </div>
+                              <div class="arrowDiv">
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,0,0,1)">&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,1,0,1)">&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,2,0,1)">&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,3,0,1)">&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,4,0,1)">&lt;&lt;</btn>
+                              </div>
+                              <div id="roles">
+                                  <div class="roleLabel" id="farmersLabel"><span>Farmers: 0</span></div>
+                                  <div class="roleLabel" id="buildersLabel"><span class="roleLabel">Builders: 0</span></div>
+                                  <div class="roleLabel" id="expandLabel"><span class="roleLabel">Land Clearers: 0</span></div>
+                                  <div class="roleLabel" id="woodcuttersLabel"><span class="roleLabel">Woodcutters: 0</span></div>
+                                  <div class="roleLabel" id="quarrymenLabel"><span class="roleLabel">Quarrymen: 0</span></div>
+                              </div>
+                              <div class="arrowDiv">
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,0,1,1)">&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,1,1,1)">&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,2,1,1)">&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,3,1,1)">&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,4,1,1)">&gt;&gt;</btn>
+                              </div>
+                              <div class="arrowDiv">
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,0,1,10)">&gt;&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,1,1,10)">&gt;&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,2,1,10)">&gt;&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,3,1,10)">&gt;&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Worker(main,4,1,10)">&gt;&gt;&gt;</btn>
+                              </div>
+                          </div>
+                          <div id="building">
+                              <div class="arrowDiv">
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,0,0,10)">&lt;&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,1,0,10)">&lt;&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,2,0,10)">&lt;&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,3,0,10)">&lt;&lt;&lt;</btn>
+                              </div>
+                              <div class="arrowDiv">
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,0,0,1)">&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,1,0,1)">&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,2,0,1)">&lt;&lt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,3,0,1)">&lt;&lt;</btn>
+                              </div>
+                              <div id="buildings">
+                                  <div class="roleLabel" id="farms"><span class="roleLabel">Farms: 0</span></div>
+                                  <div class="roleLabel" id="hut"><span class="roleLabel">Huts: 0</span></div>
+                                  <div class="roleLabel" id="lumberMill"><span class="roleLabel">Lumber Mills: 0</span></div>
+                                  <div class="roleLabel" id="quarry"><span class="roleLabel">Quarries: 0</span></div>
+                              </div>
+                              <div class="arrowDiv">
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,0,1,1)">&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,1,1,1)">&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,2,1,1)">&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,3,1,1)">&gt;&gt;</btn>
+                              </div>
+                              <div class="arrowDiv">
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,0,1,10)">&gt;&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,1,1,10)">&gt;&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,2,1,10)">&gt;&gt;&gt;</btn>
+                                  <btn class="Arrow" onmousedown="Increment_Build(main,3,1,10)">&gt;&gt;&gt;</btn>
+                              </div>
+                          </div>
+                        </div>
+                        <div id="research" style="display:none;flex-direction:column">
+                            <div class="researchRow">
+                                <btn class="buyButton" title="Unlocks the ability to generate stone.">
+                                    Stone Mining
+                                </btn>
+                                <btn class="buyButton" title="Unlocks the ability to build mills, which increase farmer output.">
+                                    Mills
+                                </btn>
+                                <btn class="buyButton" title="Unlocks the ability to generate knowledge.">
+                                    Libraries
+                                </btn>
+                                <btn class="buyButton" title="Doubles base farm output.">
+                                    Irrigation
+                                </btn>
+                                <btn class="buyButton" title="Unlocks ability to cure diseased.">
+                                    Medicine
+                                </btn>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+                <div id="rightCol">
+                    <div id="rightMenu" class="menu">
+                        <btn class="menButton" onmousedown = "Show_Tab(1,0)">Log</btn>
+                        <btn class="menButton" onmousedown = "Show_Tab(1,1)">Population</btn>
+                        <btn id="graphButton" onmousedown = "Show_Tab(1,2)">Graph</btn>
+                    </div>
+                    <div id="rightInfo" class="info">
+                        <div id="log" class="infoPane" style="display:none;flex-direction:column;font-size:14;margin:0px 10px">
+                            <br>
+                        </div>
+                        <div id="pop" class="infoPane" style="display:none;flex-direction:column;font-size:14;margin:0px 10px">
+                            <p></p>
+                        </div>
+                        <div id="graph" style="display:flex;flex-direction:column;width:95%;height:95%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="canvasjs.min.js"></script>
+    <script src="circular-json.js"></script>
+    <script src="maleNames.js"></script>
+    <script src="femaleNames.js"></script>
+    <script src="lastNames.js"></script>
+    <script src="index.js"></script>
+</html>

@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Civ Simulator!</title>
+        <link href="index.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="mainContainer" class="fadeIn">
+            <div id="header">
+                <span style="margin:0px 20px">Col Sim</span> 
+                <btn class = "buybutton" onmousedown = "Increment_Year(main)">END YEAR</btn>             
+            </div>
+            <div id="everythingButHeader">
+                <div id="leftCol">
+                    <div id="leftMenu" class="menu">
+                        <btn id="resourceButton" onmousedown = "Show_Tab(0,0)">Resources</btn>
+                        <btn class="menButton" onmousedown = "Show_Tab(0,1)">Employment</btn>
+                        <btn id="buildButton" onmousedown = "Show_Tab(0,2)">Building</btn>
+                    </div>
+                    <div id="leftInfo" class="info">
+                        <div id="flowAndResources">
+                            <span>Point in Time Resources</span>
+                            <div id="resources">
+                                <div class="materials">
+                                    <img src="apple.png" class="matIcons"></img>
+                                    <span id="food">0</span>
+                                </div>
+                                <div class="materials">
+                                    <img src="wood.png" class="matIcons"></img>
+                                    <span id="wood">0</span>
+                                </div>
+                                <div class="materials">
+                                    <img src="stone.png" class="matIcons"></img>
+                                    <span id="stone">0</span>
+                                </div>
+                                <div class="materials">
+                                    <img src="house.png" class="matIcons"></img>
+                                    <span id="house">0</span>
+                                </div>
+                            </div>
+                            <span>Flow Resources</span>
+                            <div id="flow">
+                                <div class="materials">
+                                    <img src="labor.png" class="matIcons"></img>
+                                    <span id="labor">0</span>
+                                </div>
+                                <div class="materials">
+                                    <img src="builder.png" class="matIcons"></img>
+                                    <span id="builder">0</span>
+                                </div>
+                                <div class="materials">
+                                    <img src="lumber.png" class="matIcons"></img>
+                                    <span id="lumber">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="employment" style="display:none">
+                            <div id="leftArrows">
+                                <btn class="Arrow" onmousedown="Increment_Worker(main,0,-1)">&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Worker(main,1,-1)">&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Worker(main,2,-1)">&lt;&lt;</btn>
+                            </div>
+                            <div id="roles">
+                                <div class="roleLabel" id="farmersLabel"><span>Farmers: 0</span></div>
+                                <div class="roleLabel" id="buildersLabel"><span class="roleLabel">Builders: 0</span></div>
+                                <div class="roleLabel" id="woodcuttersLabel"><span class="roleLabel">Woodcutters: 0</span></div>
+                            </div>
+                            <div id="rightArrows">
+                                <btn class="Arrow" onmousedown="Increment_Worker(main,0,1)">&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Worker(main,1,1)">&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Worker(main,2,1)">&gt;&gt;</btn>
+                            </div>
+                        </div>
+                        <div id="building" style="display:none">
+                            <div id="leftArrows">
+                                <btn class="Arrow" onmousedown="Increment_Build(main,0,-1)">&lt;&lt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,1,-1)">&lt;&lt;</btn>
+                            </div>
+                            <div id="buildings">
+                                <div class="roleLabel" id="hut"><span class="roleLabel">Huts: 0</span></div>
+                                <div class="roleLabel" id="lumberMill"><span class="roleLabel">Lumber Mills: 0</span></div>
+                            </div>
+                            <div id="rightArrows">
+                                <btn class="Arrow" onmousedown="Increment_Build(main,0,1)">&gt;&gt;</btn>
+                                <btn class="Arrow" onmousedown="Increment_Build(main,1,1)">&gt;&gt;</btn>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div id="rightCol">
+                    <div id="rightMenu" class="menu">
+                        <btn class="menButton" onmousedown = "Show_Tab(1,0)">Log</btn>
+                        <btn class="menButton" onmousedown = "Show_Tab(1,1)">Population</btn>
+                        <btn id="graphButton" onmousedown = "Show_Tab(1,2)">Graph</btn>
+                    </div>
+                    <div id="rightInfo" class="info">
+                        <div id="log" style="display:none;flex-direction:column">
+                        </div>
+                        <div id="pop" style="display:none;flex-direction:column;font-size:14;margin:0px 10px">
+                        </div>
+                        <div id="graph" style="display:flex;flex-direction:column;width:95%;height:95%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="canvasjs.min.js"></script>
+    <script src="maleNames.js"></script>
+    <script src="femaleNames.js"></script>
+    <script src="lastNames.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="index.js"></script>
+</html>
